@@ -175,9 +175,9 @@ bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
 
 ```{r Arrange Bias and Rates, fig.width = 10, fig.height = 5, warning = FALSE, echo = FALSE}
 bias <- bias +
-  labs(title = 'ROBINS-I Tool Analysis', x = 'Bias Domain', y = NULL) + scale_y_discrete(position = "right")
+  labs(title = NULL, x = 'Bias Domain', y = NULL) + scale_y_discrete(position = "right")
 
-rates <- rates + labs(title = 'Metformin Rate Ratios vs AMD', x = 'Rate Ratio', y = NULL)
+rates <- rates + labs(title = NULL, x = 'Rate Ratio', y = NULL)
 plot <- ggarrange(rates, bias, ncol = 2)
 ```
 
