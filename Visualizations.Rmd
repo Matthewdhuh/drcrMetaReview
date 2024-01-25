@@ -1,0 +1,206 @@
+---
+title: '\textbf{Metformin and AMD: Review of Current Literature}'
+author: '\textit{Matthew Huh, BA}'
+output:
+  pdf_document: default
+---
+
+```{r setup, echo=FALSE, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggrepel)
+library(egg)
+library(tidyr)
+library(grid)
+```
+
+\definecolor{linkblue}{rgb}{0,0,0.7}
+
+\begin{center}
+    \textbf{\Large Prevalence, Clinical Trial Count, and DRCR Protocol Count}
+\end{center}
+
+```{r Dictionary Generation, echo = FALSE}
+prevalence_dict <- c(DR = 0.285 * 0.148, DME = 0.38 * 0.148, ERM = 0.026, VMT = 0.0107, RR = NULL, MH = 0.0002, Wet_AMD = 0.0094, Dry_AMD = 0.1164)
+
+clinical_dict <- c(DR = 614, DME = 578, ERM = 86, VMT = 18, RR = 11, MH = 113, Wet_AMD = 512, Dry_AMD = 67)
+```
+
+```{r Protocols, Prevalence, Clinical Trials, fig.width=5/1.2, fig.height=8/1.2, warning=FALSE, echo = FALSE}
+protocol_df <- read.csv('drcrprotocols.csv')
+protocol_df <- subset(protocol_df, Disease != 'MISC')
+
+formatted_prevalence_df <- protocol_df %>%
+  group_by(Disease) %>%
+  summarise(Number_of_Rows = n())
+
+dry_amd_row = data.frame(Disease = 'Dry_AMD', Number_of_Rows = 0)
+formatted_prevalence_df <- rbind(formatted_prevalence_df, dry_amd_row)
+formatted_prevalence_df$Prevalence <- prevalence_dict[match(formatted_prevalence_df$Disease, names(prevalence_dict))]
+formatted_prevalence_df$Clinical_Trials_Count <- clinical_dict[match(formatted_prevalence_df$Disease, names(clinical_dict))]
+
+formatted_prevalence_df <- formatted_prevalence_df %>%
+  rename(DRCR_Protocol_Count = Number_of_Rows)
+formatted_prevalence_df <- formatted_prevalence_df %>%
+  mutate(Disease = gsub("_", " ", Disease))
+
+common_theme <- theme_minimal() +
+  theme(
+    text = element_text(family = "serif"),
+    plot.title = element_text(size = rel(1.1)),  
+    axis.title.x = element_text(size = rel(0.8)),
+    axis.title.y = element_text(size = rel(1))
+  )
+
+plt1 <- ggplot(formatted_prevalence_df, aes(x = Prevalence, y = DRCR_Protocol_Count, label = Disease)) +
+  geom_point(size = 1.5) +
+  geom_text_repel(box.padding = 0.3, segment.color = NA, size = 2.5, family = "serif") +
+  labs(title = 'Prevalence vs DRCR Protocol Count',
+       x = 'Prevalence',
+       y = 'DRCR Protocol Count') + 
+  common_theme 
+
+plt2 <- ggplot(formatted_prevalence_df, aes(x = Prevalence, y = Clinical_Trials_Count, label = Disease)) + 
+  geom_point(size = 1.5) +
+  geom_text_repel(box.padding = 0.3, segment.color = NA, size = 2.5, family = "serif") +  
+  labs(title = 'Prevalence vs Clinical Trial Count', 
+       x = 'Prevalence', 
+       y = 'Clinical Trial Count') + 
+  common_theme 
+
+ggarrange(plt1, plt2)
+
+
+```
+
+\textit{\small Note: Insufficient data prevents a conclusive assessment of Radiation Retinopathy prevalence}
+
+\begin{minipage}[t]{0.65\textwidth}
+  \subsection*{\small Prevalence Values Literature Review:}
+  \begin{itemize}
+    \small
+      \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9634594/}{\textcolor{linkblue}{Age Related Macular Degeneration (AMD) (Wet and Dry)}}
+      \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2945293/}{\textcolor{linkblue}{Diabetic Retinopathy (DR)}}
+      \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2945293/}{\textcolor{linkblue}{Diabetic Macular Edema (DME)}}
+      \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5623383/}{\textcolor{linkblue}{Epiretinal Membrane (ERM)}}
+      \item \href{https://pubmed.ncbi.nlm.nih.gov/28806215/}{\textcolor{linkblue}{Vitreomacular Traction (VMT)}}
+      \item \href{https://jamanetwork.com/journals/jamaophthalmology/fullarticle/2603482}{\textcolor{linkblue}{Macular Hole (MH)}}
+      \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10093581/}{\textcolor{linkblue}{Radiation Retinopathy (RR)}}
+  \end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+  \subsection*{\small Number of Clinical Trials:}
+  \begin{itemize}
+    \small
+     \item \href{https://www.clinicaltrials.gov}{\textcolor{linkblue}{Clinical Trials Website}}
+     \item \href{https://github.com/Matthewdhuh/drcrMetaReview}{\textcolor{linkblue}{Data and Code Repository}}
+  \end{itemize}
+\end{minipage}
+
+\section*{\Large \centering Metformin's Effect on AMD: ROBINS-I Tool Bias Analysis}
+
+
+```{r Metformin Effect on AMD Forest Plot, warning = FALSE, echo = FALSE, message = FALSE}
+
+drcrrates <-read.csv('drcrrates.csv')
+study_order <- c('Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Kaufmann (2023)', 'Lee (2019)',
+                 'Jiang (2022)', 'Chen (2019)', 'Starr (2022)', 'Gokhale (2023)', 'Eton (2022)',
+                 'Stewart (2020)', 'Khanna (2022)')
+
+type_order <- c('Cross sectional', 'Retrospective cohort', 'Case control')
+
+
+drcrrates$Paper <- factor(drcrrates$Paper, levels = study_order, ordered = TRUE)
+drcrrates$Type <- factor(drcrrates$Type, levels = type_order, ordered = TRUE)
+
+common_theme <- theme_minimal() +
+  theme(
+    text = element_text(family = "serif"),
+    plot.title = element_text(size = rel(2)),  
+    axis.title.x = element_text(size = rel(1.3)),
+    axis.title.y = element_text(size = rel(1.3))
+  )
+
+rates <- ggplot(drcrrates, aes(x = Rate.ratio, y = Paper, color = Type)) +
+  geom_point(position = position_dodge(width = 0.5), size = 3) +
+  geom_errorbarh(aes(xmin = Lower, xmax = Upper, height = 0.2), position = position_dodge(width = 0.5)) +
+  labs(title = "Metformin's Effect on AMD",
+       x = 'Rate Ratio',
+       y = NULL,
+       color = 'Study Type') +
+  geom_vline(xintercept = 1, linetype = 'dashed', color = 'red') +
+  common_theme +
+  theme(legend.position = 'bottom',
+        legend.title = element_blank(),
+        legend.text = element_text(size = rel(1.1))) +
+  scale_color_manual(values = c('#FFDC36', '#00D811', 'red'))
+
+```
+
+```{r ROBINS I Tool Bias Plot, warning = FALSE, echo = FALSE}
+
+bias_df = read.csv('drcrbias.csv')
+
+bias_df$Study <- factor(bias_df$Study, levels = study_order, ordered = TRUE)
+df_dropped <- bias_df %>% select(-Type)
+df_melted <- df_dropped %>%
+  gather(key = "Bias_Type", value = "Bias_Level", -Study)
+
+color_map <- c('Low' = '#00D811', 'Moderate' = '#FFDC36', 'Serious' = 'red', 'Critical' = 'darkred')
+
+bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
+  geom_tile(color = "white", size = 0.5) +
+  scale_fill_manual(values = color_map) +
+  geom_vline(xintercept = 7.501, linetype = 'solid') + 
+  geom_vline(xintercept = 7.499, linetype = 'solid') +
+  labs(title = 'ROBINS-I Tool Bias Analysis', x = 'Bias Domain', y = NULL) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.text.x = element_text(face = "plain"),
+    text = element_text(family = "serif"),
+    plot.title = element_text(size = rel(2)),  
+    axis.title.x = element_text(size = rel(1.3)),
+    axis.title.y = element_text(size = rel(1.3)),
+    legend.text = element_text(size = rel(1.1)) 
+  )
+```
+
+```{r Arrange Bias and Rates, fig.width = 10, fig.height = 5, warning = FALSE, echo = FALSE}
+bias <- bias +
+  labs(title = 'ROBINS-I Tool Analysis', x = 'Bias Domain', y = NULL) + 
+  theme(axis.text.y = element_blank())
+rates <- rates + labs(title = 'Metformin Rate Ratios vs AMD', x = 'Rate Ratio', y = NULL)
+plot <- ggarrange(rates, bias, ncol = 2)
+```
+
+\
+
+
+\begin{minipage}[t]{0.57\textwidth}
+    \subsection*{\small ROBINS-I Tool Homepage:}
+    \begin{itemize}
+      \small
+        \item \href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool Homepage}}
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+    \begin{flushleft}
+        \small
+        \textit{D1: Bias due to confounding} \\
+        \textit{D2: Bias due to selection of participants} \\
+        \textit{D3: Bias in classification of interventions} \\
+        \textit{D4: Bias due to deviation from intended interventions} \\
+        \textit{D5: Bias due to missing data} \\
+        \textit{D6: Bias in measurement of outcomes} \\
+        \textit{D7: Bias in selection of the reported result} \\
+        \textit{Overall: Overall bias of study}
+    \end{flushleft}
+\end{minipage}
+
+
+
+
+
+
