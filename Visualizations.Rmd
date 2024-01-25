@@ -107,9 +107,9 @@ ggarrange(plt1, plt2, nrow = 2)
 ```{r Metformin Effect on AMD Forest Plot, warning = FALSE, echo = FALSE, message = FALSE}
 
 drcrrates <-read.csv('drcrrates.csv')
-study_order <- c('Jiang (2022)', 'Chen (2019)', 'Starr (2022)', 'Gokhale (2023)', 'Eton (2022)',
-                 'Stewart (2020)', 'Khanna (2022)',
-                 'Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Kaufmann (2023)', 'Lee (2019)')
+study_order <- c('Jiang (2022)', 'Chen (2019)', 'Gokhale (2023)', 'Eton (2022)',
+                 'Stewart (2020)',
+                 'Starr (2022)', 'Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Khanna (2022)', 'Kaufmann (2023)', 'Lee (2019)')
 
 type_order <- c('Case control', 'Cross sectional', 'Retrospective cohort')
 
@@ -182,20 +182,34 @@ plot <- ggarrange(rates, bias, ncol = 2)
 ```
 
 
-\begin{minipage}[t]{0.5\textwidth}
+
+
+\begin{minipage}[t]{0.55\textwidth}
     \begin{flushleft}
+      \subsection*{\small Bias Domains:}
         \small
-        \textit{D1: Bias due to confounding} \\
-        \textit{D2: Bias due to selection of participants} \\
-        \textit{D3: Bias in classification of interventions} \\
-        \textit{D4: Bias due to deviation from intended interventions} \\
-        \textit{D5: Bias due to missing data} \\
-        \textit{D6: Bias in measurement of outcomes} \\
-        \textit{D7: Bias in selection of the reported result} \\
-        \textit{Overall: Overall bias of study}
+        {D1: Bias due to confounding} \\
+        {D3: Bias in classification of interventions} \\
+        {D4: Bias due to deviation from intended interventions} \\
+        {D5: Bias due to missing data} \\
+        {D2: Bias due to selection of participants} \\
+        {D6: Bias in measurement of outcomes} \\
+        {D7: Bias in selection of the reported result} \\
     \end{flushleft}
 \end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+  \begin{flushleft}
+    \subsection*{\small Major limitations:}
+    \small
+      {Stewart: Cross-sectional} \\
+      {Eton: Unclear methods on time-dependent analysis} \\
+      {Gokhale: Young population, short time frame for time-dependent analysis}\\
+      {Starr/Chen/Jiang: No time-dependent analysis}\\
+  \end{flushleft}
+\end{minipage}
 \
+
+
 \small \textbf{ROBINS-I (Risk Of Bias In Non-randomized Studies – of Interventions)} is used by the Cochrane Scientific Committee for assessing bias in non-randomized studies of interventions. [\href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool homepage}}]
 
 
