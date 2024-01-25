@@ -164,11 +164,11 @@ bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
   theme(
     legend.position = "bottom",
     legend.title = element_blank(),
-    axis.text.x = element_text(face = "plain"),
     text = element_text(family = "serif"),
     plot.title = element_text(size = rel(2)),  
     axis.title.x = element_text(size = rel(1.3)),
     axis.title.y = element_text(size = rel(1.3)),
+    axis.text.x = element_text(face = ifelse(overall_bolder, 'bold', 'plain')),
     legend.text = element_text(size = rel(1.1))
     )
 ```
