@@ -1,6 +1,5 @@
 ---
 title: '\textbf{Metformin and AMD: Review of Current Literature}'
-author: '\textit{Matthew Huh, BA}'
 output:
   pdf_document: default
 ---
@@ -9,9 +8,10 @@ output:
 library(ggplot2)
 library(dplyr)
 library(ggrepel)
-library(egg)
 library(tidyr)
-library(grid)
+library(stringr)
+library(egg)
+
 ```
 
 \definecolor{linkblue}{rgb}{0,0,0.7}
@@ -21,12 +21,12 @@ library(grid)
 \end{center}
 
 ```{r Dictionary Generation, echo = FALSE}
-prevalence_dict <- c(DR = 0.285 * 0.148, DME = 0.38 * 0.148, ERM = 0.026, VMT = 0.0107, RR = NULL, MH = 0.0002, Wet_AMD = 0.0094, Dry_AMD = 0.1164)
+prevalence_dict <- c(DR = 0.285 * 0.148, DME = 0.027 * 0.148 * 0.148, ERM = 0.026, VMT = 0.0107, RR = NULL, MH = 0.0002, Wet_AMD = 0.0094, Dry_AMD = 0.1164)
 
 clinical_dict <- c(DR = 614, DME = 578, ERM = 86, VMT = 18, RR = 11, MH = 113, Wet_AMD = 512, Dry_AMD = 67)
 ```
 
-```{r Protocols, Prevalence, Clinical Trials, fig.width=5/1.2, fig.height=8/1.2, warning=FALSE, echo = FALSE}
+```{r Protocols, Prevalence, Clinical Trials, fig.width=4, fig.height=7, warning=FALSE, echo = FALSE}
 protocol_df <- read.csv('drcrprotocols.csv')
 protocol_df <- subset(protocol_df, Disease != 'MISC')
 
@@ -47,7 +47,7 @@ formatted_prevalence_df <- formatted_prevalence_df %>%
 common_theme <- theme_minimal() +
   theme(
     text = element_text(family = "serif"),
-    plot.title = element_text(size = rel(1.1)),  
+    plot.title = element_text(size = rel(1.1), hjust = 0.5),  
     axis.title.x = element_text(size = rel(0.8)),
     axis.title.y = element_text(size = rel(1))
   )
@@ -63,17 +63,21 @@ plt1 <- ggplot(formatted_prevalence_df, aes(x = Prevalence, y = DRCR_Protocol_Co
 plt2 <- ggplot(formatted_prevalence_df, aes(x = Prevalence, y = Clinical_Trials_Count, label = Disease)) + 
   geom_point(size = 1.5) +
   geom_text_repel(box.padding = 0.3, segment.color = NA, size = 2.5, family = "serif") +  
-  labs(title = 'Prevalence vs Clinical Trial Count', 
+  labs(title = NULL,  # Remove the title from labs
        x = 'Prevalence', 
        y = 'Clinical Trial Count') + 
-  common_theme 
+  ggtitle(str_wrap('Prevalence vs Clinical Trial Count (as listed on clinicaltrials.gov)', width = 60)) +
+  common_theme
 
-ggarrange(plt1, plt2)
-
+ggarrange(plt1, plt2, nrow = 2)
 
 ```
 
-\textit{\small Note: Insufficient data prevents a conclusive assessment of Radiation Retinopathy prevalence}
+\textit{\small Note: Prevalence values are representative of adults ages 40 or older}
+\
+\textit{\small Note: Insufficient data prevents a conclusive assessment of radiation retinopathy prevalence}
+
+
 
 \begin{minipage}[t]{0.65\textwidth}
   \subsection*{\small Prevalence Values Literature Review:}
@@ -103,11 +107,11 @@ ggarrange(plt1, plt2)
 ```{r Metformin Effect on AMD Forest Plot, warning = FALSE, echo = FALSE, message = FALSE}
 
 drcrrates <-read.csv('drcrrates.csv')
-study_order <- c('Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Kaufmann (2023)', 'Lee (2019)',
-                 'Jiang (2022)', 'Chen (2019)', 'Starr (2022)', 'Gokhale (2023)', 'Eton (2022)',
-                 'Stewart (2020)', 'Khanna (2022)')
+study_order <- c('Jiang (2022)', 'Chen (2019)', 'Starr (2022)', 'Gokhale (2023)', 'Eton (2022)',
+                 'Stewart (2020)', 'Khanna (2022)',
+                 'Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Kaufmann (2023)', 'Lee (2019)')
 
-type_order <- c('Cross sectional', 'Retrospective cohort', 'Case control')
+type_order <- c('Case control', 'Cross sectional', 'Retrospective cohort')
 
 
 drcrrates$Paper <- factor(drcrrates$Paper, levels = study_order, ordered = TRUE)
@@ -124,7 +128,7 @@ common_theme <- theme_minimal() +
 rates <- ggplot(drcrrates, aes(x = Rate.ratio, y = Paper, color = Type)) +
   geom_point(position = position_dodge(width = 0.5), size = 3) +
   geom_errorbarh(aes(xmin = Lower, xmax = Upper, height = 0.2), position = position_dodge(width = 0.5)) +
-  labs(title = "Metformin's Effect on AMD",
+  labs(title = 'Metformin Rate Ratios vs AMD',
        x = 'Rate Ratio',
        y = NULL,
        color = 'Study Type') +
@@ -132,8 +136,9 @@ rates <- ggplot(drcrrates, aes(x = Rate.ratio, y = Paper, color = Type)) +
   common_theme +
   theme(legend.position = 'bottom',
         legend.title = element_blank(),
-        legend.text = element_text(size = rel(1.1))) +
-  scale_color_manual(values = c('#FFDC36', '#00D811', 'red'))
+        legend.text = element_text(size = rel(1.1)),
+        ) +
+  scale_color_manual(values = c('red','#FFDC36', '#00D811'))
 
 ```
 
@@ -146,6 +151,8 @@ df_dropped <- bias_df %>% select(-Type)
 df_melted <- df_dropped %>%
   gather(key = "Bias_Type", value = "Bias_Level", -Study)
 
+overall_bolder = c(rep(0, 7), 1)
+
 color_map <- c('Low' = '#00D811', 'Moderate' = '#FFDC36', 'Serious' = 'red', 'Critical' = 'darkred')
 
 bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
@@ -153,7 +160,7 @@ bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
   scale_fill_manual(values = color_map, limits = c('Low', 'Moderate', 'Serious', 'Critical')) +
   geom_vline(xintercept = 7.501, linetype = 'solid') + 
   geom_vline(xintercept = 7.499, linetype = 'solid') +
-  labs(title = 'ROBINS-I Tool Bias Analysis', x = 'Bias Domain', y = NULL) +
+  labs(title = 'ROBINS-I Tool Analysis', x = 'Bias Domain', y = NULL) +
   theme(
     legend.position = "bottom",
     legend.title = element_blank(),
@@ -162,30 +169,20 @@ bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
     plot.title = element_text(size = rel(2)),  
     axis.title.x = element_text(size = rel(1.3)),
     axis.title.y = element_text(size = rel(1.3)),
-    legend.text = element_text(size = rel(1.1)) 
-  )
+    legend.text = element_text(size = rel(1.1))
+    )
 ```
 
 ```{r Arrange Bias and Rates, fig.width = 10, fig.height = 5, warning = FALSE, echo = FALSE}
 bias <- bias +
-  labs(title = 'ROBINS-I Tool Analysis', x = 'Bias Domain', y = NULL) + 
-  theme(axis.text.y = element_blank())
+  labs(title = 'ROBINS-I Tool Analysis', x = 'Bias Domain', y = NULL) + scale_y_discrete(position = "right")
+
 rates <- rates + labs(title = 'Metformin Rate Ratios vs AMD', x = 'Rate Ratio', y = NULL)
 plot <- ggarrange(rates, bias, ncol = 2)
 ```
 
-\
 
-
-\begin{minipage}[t]{0.57\textwidth}
-    \subsection*{\small ROBINS-I Tool Homepage:}
-    \begin{itemize}
-      \small
-        \item \href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool Homepage}}
-    \end{itemize}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.55\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
     \begin{flushleft}
         \small
         \textit{D1: Bias due to confounding} \\
@@ -198,6 +195,8 @@ plot <- ggarrange(rates, bias, ncol = 2)
         \textit{Overall: Overall bias of study}
     \end{flushleft}
 \end{minipage}
+\
+\small \textbf{ROBINS-I (Risk Of Bias In Non-randomized Studies – of Interventions)} is used by the Cochrane Scientific Committee for assessing bias in non-randomized studies of interventions. [\href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool homepage}}]
 
 
 
