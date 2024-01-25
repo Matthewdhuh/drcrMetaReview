@@ -1,0 +1,13 @@
+﻿Paper,Age,AMD,Diabetes,Note,Rate ratio,Lower,Upper,Type
+Chen (2019),,Both,T2DM,,0.57,0.52,0.63,Retrospective cohort
+Brown (2019),≥55,Both,DM,,0.7,0.49,0.98,Case control
+Lee (2019),≥65,Both,DM,,1.15,0.91,1.45,Case control
+Stewart (2020),≥60,Dry,DM,,0.59,0.46,0.77,Cross sectional
+Blitzer(2021),≥55,Both,,,0.94,0.92,0.96,Case control
+Starr (2022),,Dry,,Pop. Based,0.6,0.4,0.91,Retrospective cohort
+Jiang (2022),≥55,Dry,T2DM,,0.17,0.09,0.34,Retrospective cohort
+Eton (2022),≥55,Dry,DM,Active Usage,1.08,1.04,1.12,Retrospective cohort
+Gokhale (2023),≥40,Both,T2DM,,1.02,0.92,1.12,Retrospective cohort
+Kaufman (2023),≥55,Dry,DM,,0.97,0.95,1,Case control
+Khanna (2022),≥55,Wet,,,0.95,0.91,0.98,Cross sectional
+Aggaral (2024),≥55,Dry,No DM,,0.85,0.79,0.92,Case control

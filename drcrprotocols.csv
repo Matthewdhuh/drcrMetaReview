@@ -1,0 +1,41 @@
+﻿ID,Title,Disease,Status,Start Date,End Date,Trial ID
+A,A Pilot Study of Laser Photocoagulation for Diabetic Macular Edema,DME,Closed,6/7/03,1/31/08,NCT00071773
+B,A Randomized Trial Comparing Intravitreal Triamcinolone Acetonide and Laser Photocoagulation for Diabetic Macular Edema,DME,Closed,7/1/04,10/3/08,NCT00367133
+D,Evaluation of Vitrectomy for Diabetic Macular Edema Study,DME,Closed,8/9/04,2/26/09,NCT00709319
+E,A Pilot Study of Peribulbar Triamcinolone Acetonide for Diabetic Macular Edema,DME,Closed,8/31/04,11/1/07,NCT00369486
+C,Temporal Variation in Optical Coherence Tomography Measurements of Retinal Thickening in Diabetic Macular Edema,DME,Closed,10/1/04,5/20/05, 
+H,A Phase 2 Evaluation of Anti-VEGF Therapy for Diabetic Macular Edema: Bevacizumab (Avastin),DME,Closed,5/1/05,2/29/08,NCT00336323
+F,An Observational Study of the Development of Diabetic Macular Edema Following Scatter Laser Photocoagulation,DME,Closed,9/29/05,1/31/08,NCT00687154
+G,Subclinical Diabetic Macular Edema Study,DME,Closed,11/28/05,4/22/09, 
+K,The Course of Response to Focal Photocoagulation for Diabetic Macular Edema,DME,Closed,11/17/06,6/19/08,NCT00442156
+I,Intravitreal Ranibizumab or Triamcinolone Acetonide in Combination with Laser Photocoagulation for Diabetic Macular Edema,DME,Closed,3/20/07,12/31/13,NCT00444600
+J,Intravitreal Ranibizumab or Triamcinolone Acetonide as Adjunctive Treatment to Panretinal Photocoagulation for Proliferative Diabetic Retinopathy,DR,Closed,3/20/07,7/7/10,NCT00445003
+L,Evaluation of Visual Acuity Measurements in Eyes with Diabetic Macular Edema,DME,Closed,6/1/07,11/6/10, 
+O,Comparison of Time Domain OCT and Spectral Domain OCT Retinal Thickness Measurement in Diabetic Macular Edema,DME,Closed,5/14/09,1/31/13, 
+P,A Pilot Study in Individuals with Center-Involved DME Undergoing Cataract Surgery,DME,Closed,6/1/09,11/12/10, 
+Q,An Observational Study in Individuals with Diabetic Retinopathy without Center-Involved DME Undergoing Cataract Surgery,DR,Closed,7/1/09,5/19/11, 
+N,An Evaluation of Intravitreal Ranibizumab for Vitreous Hemorrhage Due to Proliferative Diabetic Retinopathy,DR,Closed,6/14/10,12/21/12,NCT00996437
+M,Effect of Diabetes Education during Retinal Ophthalmology Visits on Diabetes Control,DR,Closed,4/4/11,12/31/14,NCT01323348
+R,A Phase II Evaluation of Topical NSAIDs in Eyes with Non Central Involved DME,DME,Closed,5/19/11,12/18/13,NCT01331005
+S,Prompt Panretinal Photocoagulation versus Intravitreal Ranibizumab with Deferred Panretinal Photocoagulation for Proliferative Diabetic Retinopathy,DR,Closed,2/27/12,2/5/18,NCT01489189
+GEN,Genes in Diabetic Retinopathy Project,DR,Recruiting,3/2/12, , 
+T,"A Comparative Effectiveness Study of Intravitreal Aflibercept, Bevacizumab and Ranibizumab for Diabetic Macular Edema",DME,Closed,8/21/12,10/18/18,NCT01627249
+V,Treatment for Central-Involved Diabetic Macular Edema in Eyes with Very Good Visual Acuity,DME,Closed,11/1/13,9/11/18,NCT01909791
+U,Short-term Evaluation of Combination Corticosteroid+Anti-VEGF Treatment for Persistent Central-Involved Diabetic Macular Edema Following Anti-VEGF Therapy,DME,Closed,2/19/14,6/1/17,NCT01945866
+AA,Peripheral Diabetic Retinopathy (DR) Lesions on Ultrawide-field Fundus Images and Risk of DR Worsening Over Time,DR,Closed,1/1/15, ,NA
+W,Intravitreous Anti-VEGF Treatment for Prevention of Vision Threatening Diabetic Retinopathy in Eyes at High Risk,DR,Closed,1/4/16,1/4/22,NCT02634333
+AB,Intravitreous Anti-VEGF vs. Prompt Vitrectomy for Vitreous Hemorrhage from Proliferative Diabetic Retinopathy,DR,Closed,11/14/16,1/9/20,NCT02858076
+TX,"A Comparative Effectiveness Study of Intravitreal Aflibercept, Bevacizumab and Ranibizumab for Diabetic Macular Edema – Follow-up Extension Study",DME,Closed,6/1/17,4/18/19, 
+AC,Randomized Trial of Intravitreous Aflibercept versus Intravitreous Bevacizumab + Deferred Aflibercept for Treatment of Central-Involved Diabetic Macular Edema,DME,Closed,12/1/17, ,NCT03321513
+AD,PROMINENT-Eye Ancillary Study: Diabetic Retinopathy Outcomes in a Randomized Trial of Pemafibrate versus Placebo,DR,Closed,12/15/17,12/31/18,NCT03345901
+AH,Single-Arm Study Assessing the Effects of Pneumatic Vitreolysis on Macular Hole,MH,Closed,9/1/18,7/22/20,NCT03677869
+AG,Randomized Clinical Trial Assessing the Effects of Pneumatic Vitreolysis on Vitreomacular Traction,VMT,Closed,9/6/18,8/6/20,NCT03647267
+AE,A Pilot Study Evaluating Photobiomodulation Therapy for Diabetic Macular Edema,DME,Closed,4/9/19,11/13/20,NCT03866473
+AJ,Vitreous Proteomics in Eyes with a Macular Hole,MH,Closed,6/1/20, , 
+AF,A Randomized Trial Evaluating Fenofibrate for Prevention of Diabetic Retinopathy Worsening,DR,Recruiting,3/1/21, ,NCT04661358
+AK,Home OCT Monitoring System: Feasibility Study,MISC,Closed,7/13/21, , 
+AM,Randomized Trial Comparing Immediate versus Deferred Surgery for Symptomatic Epiretinal Membranes,ERM,Recruiting,1/1/22, ,NCT05145491
+AN,A Phase 2 Evaluation of Tonabersat for Diabetic Macular Edema (DME),DME,Recruiting,5/16/23, ,NCT05727891
+AL,Randomized Clinical Trial Evaluating Intravitreal Faricimab Injections or Fluocinolone Acetonide Intravitreal Implants vs Observation for Prevention of Visual Acuity Loss due to Radiation Retinopathy,RR,Recruiting,5/25/23, , 
+AQ,Diagnostic Dataset to Enrich Recruiting for Clinical Trials for Diabetic Retinal Disease: A Feasibility Study,DR,Recruiting,6/22/23, , 
+AO,Home OCT-Guided Treatment versus Treat and Extend for the Management of Neovascular AMD,Wet_AMD,Recruiting,9/28/23, ,NCT05904028
