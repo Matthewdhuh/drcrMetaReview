@@ -150,7 +150,7 @@ color_map <- c('Low' = '#00D811', 'Moderate' = '#FFDC36', 'Serious' = 'red', 'Cr
 
 bias <- ggplot(df_melted, aes(x = Bias_Type, y = Study, fill = Bias_Level)) +
   geom_tile(color = "white", size = 0.5) +
-  scale_fill_manual(values = color_map) +
+  scale_fill_manual(values = color_map, limits = c('Low', 'Moderate', 'Serious', 'Critical')) +
   geom_vline(xintercept = 7.501, linetype = 'solid') + 
   geom_vline(xintercept = 7.499, linetype = 'solid') +
   labs(title = 'ROBINS-I Tool Bias Analysis', x = 'Bias Domain', y = NULL) +
