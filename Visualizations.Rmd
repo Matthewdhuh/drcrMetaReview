@@ -184,29 +184,38 @@ plot <- ggarrange(rates, bias, ncol = 2)
 
 
 
-\begin{minipage}[t]{0.55\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
     \begin{flushleft}
       \subsection*{\small Bias Domains:}
         \small
-        {D1: Bias due to confounding} \\
-        {D3: Bias in classification of interventions} \\
-        {D4: Bias due to deviation from intended interventions} \\
-        {D5: Bias due to missing data} \\
-        {D2: Bias due to selection of participants} \\
-        {D6: Bias in measurement of outcomes} \\
-        {D7: Bias in selection of the reported result} \\
+        {\textbf{D1:} Bias due to confounding} \\
+        {\textbf{D2:} Bias due to selection of participants} \\
+        {\textbf{D3:} Bias in classification of interventions} \\
+        {\textbf{D4:} Bias due to deviation from intended interventions} \\
+        {\textbf{D5:} Bias due to missing data} \\
+        {\textbf{D6:} Bias in measurement of outcomes} \\
+        {\textbf{D7:} Bias in selection of the reported result} \\
     \end{flushleft}
 \end{minipage}
 \begin{minipage}[t]{0.5\textwidth}
   \begin{flushleft}
     \subsection*{\small Major limitations:}
     \small
-      {Stewart: Cross-sectional} \\
-      {Eton: Unclear methods on time-dependent analysis} \\
-      {Gokhale: Young population, short time frame for time-dependent analysis}\\
-      {Starr/Chen/Jiang: No time-dependent analysis}\\
+      {\textbf{Lee:} Case-control (selection bias)} \\
+      {\textbf{Kaufmann:} Case-control (selection bias)} \\
+      {\textbf{Khanna:} Case-control (selection bias)} \\
+      {\textbf{Blitzer:} Case-control (selection bias)} \\ 
+      {\textbf{Aggarwal:} Case-control (selection bias)} \\
+      {\textbf{Brown:} Case-control (selection bias)} \\
+      {\textbf{Starr:} Case-control (selection bias)} \\
+      {\textbf{Stewart:} Cross-sectional (no temporal information)} \\
+      {\textbf{Eton:} Unclear methods on time-dependent analysis} \\
+      {\textbf{Gokhale:} Young population (greater than 40 yr); short time frame for time-dependent analysis} \\
+      {\textbf{Chen:} No time-dependent analysis} \\
+      {\textbf{Jiang:} No time-dependent analysis} \\
   \end{flushleft}
 \end{minipage}
+
 \
 
 
