@@ -11,7 +11,6 @@ library(ggrepel)
 library(tidyr)
 library(stringr)
 library(egg)
-
 ```
 
 \definecolor{linkblue}{rgb}{0,0,0.7}
@@ -138,7 +137,7 @@ rates <- ggplot(drcrrates, aes(x = Rate.ratio, y = Paper, color = Type)) +
         legend.title = element_blank(),
         legend.text = element_text(size = rel(1.1)),
         ) +
-  scale_color_manual(values = c('red','#FFDC36', '#00D811'))
+  scale_color_manual(values = c('blue','purple', '#1EF0E2'))
 
 ```
 
