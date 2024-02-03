@@ -76,8 +76,6 @@ ggarrange(plt1, plt2, nrow = 2)
 \
 \textit{\small Note: Insufficient data prevents a conclusive assessment of radiation retinopathy prevalence}
 
-
-
 \begin{minipage}[t]{0.65\textwidth}
   \subsection*{\small Prevalence Values Literature Review:}
   \begin{itemize}
@@ -106,7 +104,7 @@ ggarrange(plt1, plt2, nrow = 2)
 ```{r Metformin Effect on AMD Forest Plot, warning = FALSE, echo = FALSE, message = FALSE}
 
 drcrrates <-read.csv('drcrrates.csv')
-study_order <- c('Jiang (2022)', 'Chen (2019)', 'Gokhale (2023)', 'Eton (2022)',
+study_order <- c('Jiang (2022)', 'Chen (2019)', 'Tseng (2023)', 'Gokhale (2023)', 'Eton (2022)',
                  'Stewart (2020)',
                  'Starr (2022)', 'Brown (2019)', 'Aggarwal (2024)', 'Blitzer (2021)', 'Khanna (2022)', 'Kaufmann (2023)', 'Lee (2019)')
 
@@ -200,26 +198,29 @@ plot <- ggarrange(rates, bias, ncol = 2)
   \begin{flushleft}
     \subsection*{\small Major limitations:}
     \small
-      {\textbf{Lee:} Case-control (selection bias)} \\
-      {\textbf{Kaufmann:} Case-control (selection bias)} \\
-      {\textbf{Khanna:} Case-control (selection bias)} \\
-      {\textbf{Blitzer:} Case-control (selection bias)} \\ 
-      {\textbf{Aggarwal:} Case-control (selection bias)} \\
-      {\textbf{Brown:} Case-control (selection bias)} \\
-      {\textbf{Starr:} Case-control (selection bias)} \\
-      {\textbf{Stewart:} Cross-sectional (no temporal information)} \\
-      {\textbf{Eton:} Unclear methods on time-dependent analysis} \\
-      {\textbf{Gokhale:} Young population (greater than 40 yr); short time frame for time-dependent analysis} \\
-      {\textbf{Chen:} No time-dependent analysis} \\
-      {\textbf{Jiang:} No time-dependent analysis} \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/31250582/}{\textcolor{blue}{\text{Lee:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/37589984/}{\textcolor{blue}{\text{Kaufmann:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/38259182/}{\textcolor{blue}{\text{Khanna:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/33475696/}{\textcolor{blue}{\text{Blitzer:}}} Case-control (selection bias) \\ 
+      \href{https://pubmed.ncbi.nlm.nih.gov/38019527/}{\textcolor{blue}{\text{Aggarwal:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/30973575/}{\textcolor{blue}{\text{Brown:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/36151313/}{\textcolor{blue}{\text{Starr:}}} Case-control (selection bias) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/32525055/}{\textcolor{blue}{\text{Stewart:}}} Cross-sectional (no temporal information) \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/33607930/}{\textcolor{blue}{\text{Eton:}}} Unclear methods on time-dependent analysis \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/35115301/}{\textcolor{blue}{\text{Gokhale:}}} Young population (greater than 40 yr); short time frame for time-dependent analysis \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/31781371/}{\textcolor{blue}{\text{Chen:}}} No time-dependent analysis \\
+      \href{https://pubmed.ncbi.nlm.nih.gov/35473747/}{\textcolor{blue}{\text{Jiang:}}} No time-dependent analysis \\
+      \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9963185/}{\textcolor{blue}{\text{Tseng:}}} No time-dependent analysis \\
   \end{flushleft}
 \end{minipage}
+
 
 \
 
 
-\small \textbf{ROBINS-I (Risk Of Bias In Non-randomized Studies – of Interventions)} is used by the Cochrane Scientific Committee for assessing bias in non-randomized studies of interventions. [\href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool homepage}}]
 
+
+\small \textbf{ROBINS-I (Risk Of Bias In Non-randomized Studies – of Interventions)} is used by the Cochrane Scientific Committee for assessing bias in non-randomized studies of interventions. [\href{https://methods.cochrane.org/robins-i}{\textcolor{linkblue}{ROBINS-I Tool homepage}}]
 
 
 
