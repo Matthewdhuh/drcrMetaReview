@@ -141,8 +141,10 @@ rates <- ggplot(drcrrates, aes(x = Rate.ratio, y = Paper, color = Type)) +
 
 ```{r ROBINS I Tool Bias Plot, warning = FALSE, echo = FALSE}
 
-bias_df = read.csv('drcrbias.csv')
-
+bias_df <- read.csv('drcrbias.csv') %>%
+  filter(`Intervention` == 'Metformin') %>%
+  select(-`Intervention`)
+  
 bias_df$Study <- factor(bias_df$Study, levels = study_order, ordered = TRUE)
 df_dropped <- bias_df %>% select(-Type)
 df_melted <- df_dropped %>%
@@ -208,9 +210,9 @@ plot <- ggarrange(rates, bias, ncol = 2)
       \href{https://pubmed.ncbi.nlm.nih.gov/32525055/}{\textcolor{blue}{\text{Stewart:}}} Cross-sectional (no temporal information) \\
       \href{https://pubmed.ncbi.nlm.nih.gov/33607930/}{\textcolor{blue}{\text{Eton:}}} Unclear methods on time-dependent analysis \\
       \href{https://pubmed.ncbi.nlm.nih.gov/35115301/}{\textcolor{blue}{\text{Gokhale:}}} Young population (greater than 40 yr); short time frame for time-dependent analysis \\
+      \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9963185/}{\textcolor{blue}{\text{Tseng:}}} No time-dependent analysis \\
       \href{https://pubmed.ncbi.nlm.nih.gov/31781371/}{\textcolor{blue}{\text{Chen:}}} No time-dependent analysis \\
       \href{https://pubmed.ncbi.nlm.nih.gov/35473747/}{\textcolor{blue}{\text{Jiang:}}} No time-dependent analysis \\
-      \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9963185/}{\textcolor{blue}{\text{Tseng:}}} No time-dependent analysis \\
   \end{flushleft}
 \end{minipage}
 

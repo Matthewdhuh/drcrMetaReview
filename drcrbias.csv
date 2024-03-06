@@ -1,14 +1,17 @@
-﻿Study,D1,D2,D3,D4,D5,D6,D7,Overall,Type
-Gokhale (2023),Serious,Low,Low,Low,Low,Moderate,Low,Moderate,Retrospective Cohort
-Lee (2019),Serious,Critical,Serious,Low,Moderate,Low,Low,Serious,Case Control
-Eton (2022),Serious,Moderate,Low,Low,Moderate,Low,Moderate,Moderate,Retrospective Cohort
-Stewart (2020),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Cross Sectional
-Jiang (2022),Critical,Critical,Critical,Moderate,Serious,Moderate,Moderate,Critical,Retrospective Cohort
-Brown (2019),Critical,Critical,Serious,Serious,Serious,Moderate,Moderate,Serious,Case Control
-Kaufmann (2023),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control
-Khanna (2022),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control
-Aggarwal (2024),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control
-Starr (2022),Serious,Serious,Moderate,Low,Moderate,Moderate,Low,Serious,Case Control
-Chen (2019),Serious,Moderate,Moderate,Low,Low,Moderate,Low,Moderate,Case Control
-Blitzer (2021),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control
-Tseng (2023),Moderate,Low,Moderate,Low,Low,Moderate,Low,Moderate,Retrospective Cohort
+﻿Study,D1,D2,D3,D4,D5,D6,D7,Overall,Type,Intervention
+Gokhale (2023),Serious,Low,Low,Low,Low,Moderate,Low,Moderate,Retrospective Cohort,Metformin
+Lee (2019),Serious,Critical,Serious,Low,Moderate,Low,Low,Serious,Case Control,Metformin
+Eton (2022),Serious,Moderate,Low,Low,Moderate,Low,Moderate,Moderate,Retrospective Cohort,Metformin
+Stewart (2020),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Cross Sectional,Metformin
+Jiang (2022),Critical,Critical,Critical,Moderate,Serious,Moderate,Moderate,Critical,Retrospective Cohort,Metformin
+Brown (2019),Critical,Critical,Serious,Serious,Serious,Moderate,Moderate,Serious,Case Control,Metformin
+Kaufmann (2023),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control,Metformin
+Khanna (2022),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control,Metformin
+Aggarwal (2024),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control,Metformin
+Starr (2022),Serious,Serious,Moderate,Low,Moderate,Moderate,Low,Serious,Case Control,Metformin
+Chen (2019),Serious,Moderate,Moderate,Low,Low,Moderate,Low,Moderate,Case Control,Metformin
+Blitzer (2021),Serious,Serious,Low,Low,Moderate,Moderate,Low,Serious,Case Control,Metformin
+Tseng (2023),Moderate,Low,Moderate,Low,Low,Moderate,Low,Moderate,Retrospective Cohort,Metformin
+Brilliant (2016),Critical,Serious,Moderate,Low,Serious,Moderate,Moderate,Serious,Cross Sectional,Levadopa
+Figueroa (2020),Serious,Moderate,Low,Low,Low,Serious,Low,Serious,Phase 2 Clinical Trial,Levadopa
+Hyman (2023),Serious,Serious,Moderate,Moderate,Critical,Moderate,Low,Serious,Case Control,Levadopa
